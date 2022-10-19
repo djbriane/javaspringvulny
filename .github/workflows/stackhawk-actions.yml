@@ -12,11 +12,16 @@ jobs:
   build-and-scan:
     name: Build and Scan
     runs-on: ubuntu-20.04
+    # services: # add this to run vulny in a docker container (faster)
+    #   vulny-node-express: # name
+    #     image: bwvolleyball/demo_vuln_node # image
+    #     ports:
+    #       - 3000:3000
     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Setup Java and Gradle cache
+      - name: Setup Java and Gradle cache # replace start for docker ----
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt' # See 'Supported distributions' for available options
@@ -30,7 +35,7 @@ jobs:
         run: ./gradlew test
 
       - name: Run the app
-        run: ./gradlew bootRun &
+        run: ./gradlew bootRun & # replace stop for docker ----
 
       - name: Test with HawkScan
         uses: stackhawk/hawkscan-action@v2.0.0
@@ -39,5 +44,6 @@ jobs:
           configurationFiles: stackhawk.d/stackhawk-openapi.yml
         env:
           APP_ID: ${{ secrets.APP_ID }}
+          APP_ENV: 'Development'
           COMMIT_SHA: ${{ github.event.pull_request.head.sha }} # Get the commit SHA from GitHub -> needed for Actions
           BRANCH_NAME: ${{ github.head_ref }} # Used to display Branch name in the UI
