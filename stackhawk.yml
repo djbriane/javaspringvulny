@@ -26,12 +26,12 @@ app:
       success: "HTTP.*200.*"    
  tags:
   - name: _STACKHAWK_GIT_COMMIT_SHA
-    value: ${{ github.event.pull_request.head.sha }}
+    value: ${COMMIT_SHA:}
   - name: _STACKHAWK_GIT_BRANCH
-    value: ${{ github.head_ref }}
+    value: ${BRANCH_NAME:}
 hawk:
   spider:
-    maxDurationMinutes: 5
+    maxDurationMinutes: 10
 #  config:
 #    - "scanner.analyser.redirectEqualsNotFound=false"
 #    - "scanner.analyser.followRedirect=true"
