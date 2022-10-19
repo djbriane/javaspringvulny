@@ -24,7 +24,7 @@ app:
     testPath:
       path: /search
       success: "HTTP.*200.*"    
- tags:
+tags:
   - name: _STACKHAWK_GIT_COMMIT_SHA
     value: ${COMMIT_SHA:}
   - name: _STACKHAWK_GIT_BRANCH

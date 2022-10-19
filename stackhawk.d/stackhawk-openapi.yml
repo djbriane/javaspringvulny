@@ -48,7 +48,7 @@ app:
           - "username1"
           - "username2"
           - "username3"
- tags:
+tags:
   - name: _STACKHAWK_GIT_COMMIT_SHA
     value: ${COMMIT_SHA:}
   - name: _STACKHAWK_GIT_BRANCH
