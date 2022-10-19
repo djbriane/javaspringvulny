@@ -32,6 +32,7 @@ tags:
 hawk:
   spider:
     maxDurationMinutes: 10
+  failureThreshold: high
 #  config:
 #    - "scanner.analyser.redirectEqualsNotFound=false"
 #    - "scanner.analyser.followRedirect=true"
