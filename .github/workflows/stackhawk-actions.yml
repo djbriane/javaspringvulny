@@ -44,6 +44,6 @@ jobs:
           configurationFiles: stackhawk.d/stackhawk-openapi.yml
         env:
           APP_ID: ${{ secrets.APP_ID }}
-          APP_ENV: 'Development'
+          APP_ENV: 'Pre-Production'
           COMMIT_SHA: ${{ github.event.pull_request.head.sha }} # Get the commit SHA from GitHub -> needed for Actions
           BRANCH_NAME: ${{ github.head_ref }} # Used to display Branch name in the UI
